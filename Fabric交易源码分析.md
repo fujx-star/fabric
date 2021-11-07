@@ -14,7 +14,8 @@ type CommonClient struct {
 	clientConfig comm.ClientConfig
 	address      string
 }
-//internal/peer/common/common.go
+
+internal/peer/common/common.go
 ~~~
 ![图片](https://user-images.githubusercontent.com/73429424/140604139-f2243905-11b9-4257-9aa1-013d003dfdf5.png)
 
