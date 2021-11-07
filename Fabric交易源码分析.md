@@ -8,19 +8,19 @@ Fabric交易从产生到记入账本大致分为四个部分：（1）客户端�
 
 - ##### 客户端向背书节点发送交易提案请求
 
-首先要得到一个Endorser客户端。internal/peer/common/common.go中这样定义一个普通客户端结构体：
+首先要得到一个Endorser客户端。fabric/internal/peer/common/common.go中这样定义一个普通客户端结构体：
 ~~~
+fabric/internal/peer/common/common.go
+
 type CommonClient struct {
 	clientConfig comm.ClientConfig
 	address      string
 }
-
-internal/peer/common/common.go
 ~~~
-![图片](https://user-images.githubusercontent.com/73429424/140604139-f2243905-11b9-4257-9aa1-013d003dfdf5.png)
-
 newCommonClient函数用来返回一个根据地址和配置参数创建的普通客户端：
 ~~~
+fabric/internal/peer/common/common.go
+
 func newCommonClient(address string, clientConfig comm.ClientConfig) (*CommonClient, error) {
 	return &CommonClient{
 		clientConfig: clientConfig,
