@@ -4,9 +4,13 @@
 
 Fabric的项目代码个人感觉比较分散，没有像以太坊源码那样不同文件各司其职（也可能是我对源码还不够熟悉的缘故），所以基于交易流程分析。
 
-Fabric交易从产生到记入账本大致分为四个部分：（1）客户端向背书节点发送交易提案请求（2）背书节点对交易提案进行签名背书并将结果返回（3）客户端向排序服务提交交易（4）排序服务节点生成区块。我根据这四个部分的顺序依次进行分析。
+Fabric交易从产生到记入账本大致分为四个部分：
+（1）客户端向背书节点发送交易提案请求
+（2）背书节点对交易提案进行签名背书并将结果返回
+（3）客户端向排序服务提交交易
+（4）排序服务节点生成区块。我根据这四个部分的顺序依次进行分析。
 
-- #### 客户端向背书节点发送交易提案请求
+### 客户端向背书节点发送交易提案请求
 
 首先要得到一个Endorser客户端。一个普通客户端结构体这样定义：
 
@@ -210,7 +214,7 @@ func processChaincodeExecutionResult(txid, ccName string, resp *pb.ChaincodeMess
 }
 ~~~
 
-- #### 背书节点对交易提案进行签名背书并将结果返回
+### 背书节点对交易提案进行签名背书并将结果返回
 
 与EndorserClient类似地，以下是Endorser结构体的定义：
 
@@ -660,7 +664,7 @@ func (e *DefaultEndorsement) Endorse(prpBytes []byte, sp *peer.SignedProposal) (
 
 ProcessProposalSuccessfullyOrError函数根据err结果进行了最后一次错误判断后，将simulateProposal执行的结果res和ccInterest以及EndorserWithPlugin的执行结果endorsement和mPrpBytes注入到变量ProposalResponse中并将其返回给ProcessProposal函数.ProcessProposal函数用临时变量pResp接收ProposalResponse，再将结果提交给Endorser客户端。至此，经背书节点之手的提案签名完成。
 
-- #### 客户端向排序服务提交交易
+### 客户端向排序服务提交交易
 
 可以用 GetBroadcastClient函数来得到一个BroadcastGRPC客户端：
 
@@ -855,9 +859,9 @@ func (x *atomicBroadcastBroadcastServer) Recv() (*common.Envelope, error) {
 
 除Broadcast外，ab.pb.go文件中也有Deliver方法，接口实现与Broadcast类似。
 
-- #### 排序服务节点生成区块
+### 排序服务节点生成区块
 
-在orderer/common/server/server.go文件中定义了server结构体：
+server结构体的定义如下：
 
 ~~~
 //orderer/common/server/server.go
