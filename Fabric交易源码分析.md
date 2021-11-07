@@ -1,6 +1,6 @@
 # Fabric交易源码分析
 
-在用git工具将https://github.com/hyperledger/fabric.git克隆到本地时，可能由于项目较大的原因，总是出现各种各样的问题，所以索性在Github上面分析，截图来自于github，而非本地项目。
+在用git工具将 https://github.com/hyperledger/fabric.git 克隆到本地时，可能由于项目较大的原因，总是出现各种各样的问题，所以索性在Github上面分析，截图来自于github，而非本地项目。
 
 Fabric的项目代码个人感觉比较分散，没有像以太坊源码那样不同文件各司其职（也可能是我对源码还不够熟悉的缘故），所以基于交易流程分析。
 
