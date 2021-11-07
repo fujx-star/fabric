@@ -480,7 +480,8 @@ func (e *Endorser) preProcess(up *UnpackedProposal, channel *Channel) error {
 
 ~~~
 
-检查工作全部完成后，ProcessProposal函数将解包后的提案变量up传递给ProcessProposalSuccessfullyOrError函数，使其最终执行提案.ProcessProposalSuccessfullyOrError函数实际上也进行了一系列的错误判断并调用simulateProposal函数对提案做了模拟执行，如果上述工作都没有出错，那么则调用EndorseWithPlugin函数执行背书操作：
+检查工作全部完成后，ProcessProposal函数将解包后的提案变量up传递给ProcessProposalSuccessfullyOrError函数，使其最终执行提案.
+ProcessProposalSuccessfullyOrError函数实际上也进行了一系列的错误判断并调用simulateProposal函数对提案做了模拟执行，如果上述工作都没有出错，那么则调用EndorseWithPlugin函数执行背书操作：
 
 ~~~
 //core/endorser/endorser.go
