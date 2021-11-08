@@ -2,7 +2,7 @@
 
 在用git工具将 https://github.com/hyperledger/fabric.git 克隆到本地时，可能由于项目较大的原因，总是出现各种各样的问题，所以索性在Github上面分析，截图来自于github，而非本地项目。
 
-Fabric的项目代码个人感觉比较分散，没有像以太坊源码那样不同文件各司其职（也可能是我对源码还不够熟悉的缘故），所以基于交易流程分析。
+Fabric的项目代码个人感觉比较分散，没有像以太坊源码那样不同文件各司其职（可能是我对源码还不够熟悉的缘故），所以基于交易流程分析。
 
 Fabric交易从产生到记入账本大致分为四个部分：
 （1）客户端向背书节点发送交易提案请求
@@ -662,7 +662,8 @@ func (e *DefaultEndorsement) Endorse(prpBytes []byte, sp *peer.SignedProposal) (
 }
 ~~~
 
-ProcessProposalSuccessfullyOrError函数根据err结果进行了最后一次错误判断后，将simulateProposal执行的结果res和ccInterest以及EndorserWithPlugin的执行结果endorsement和mPrpBytes注入到变量ProposalResponse中并将其返回给ProcessProposal函数.ProcessProposal函数用临时变量pResp接收ProposalResponse，再将结果提交给Endorser客户端。至此，经背书节点之手的提案签名完成。
+ProcessProposalSuccessfullyOrError函数根据err结果进行了最后一次错误判断后，将simulateProposal执行的结果res和ccInterest以及EndorserWithPlugin的执行结果endorsement和mPrpBytes注入到变量ProposalResponse中并将其返回给ProcessProposal函数.ProcessProposal函数用临时变量pResp接收ProposalResponse，再将结果提交给Endorser客户端。
+至此，经背书节点之手的提案签名完成。
 
 ### 客户端向排序服务提交交易
 
